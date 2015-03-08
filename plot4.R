@@ -2,6 +2,13 @@ library("datasets")
 library("reshape2")
 source("readDataSet.R")
 
+plot2 <- function(){
+  DT <- readDataSet()
+  plot(DT$global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)", frame.plot=T,axes=F)
+  axis(1, at=c(0, 1500, 2880), labels=c("Thur","Fri","Sat"))
+  axis(2, at=c(0,2,4,6))
+}
+
 plot3 <- function(){
   DT <- readDataSet()
   DT <- melt(DT, id.vars="date", measure.vars=c("sub_metering_1","sub_metering_2","sub_metering_3"))
@@ -13,6 +20,19 @@ plot3 <- function(){
   axis(1, at=c(0, 1500, 2880), labels=c("Thur","Fri","Sat"))  
 }
 
-plot3()
 
 
+voltagePlot <- function(){
+  DT <- readDataSet()
+  plot(DT$voltage,type="l",xlab="        datetime",ylab="Voltage", frame.plot=T, xaxt="n")
+  axis(1, at=c(0, 1500, 2880), main="datetime", labels=c("Thur","Fri","Sat"))
+  axis(2, at=c(0,2,4,6))
+}
+
+voltagePlot()
+
+#plot4 <- function(){
+#  
+#}
+
+#plot4()
