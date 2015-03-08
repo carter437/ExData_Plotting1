@@ -20,8 +20,6 @@ plot3 <- function(){
   axis(1, at=c(0, 1500, 2880), labels=c("Thur","Fri","Sat"))  
 }
 
-
-
 voltagePlot <- function(){
   DT <- readDataSet()
   plot(DT$voltage,type="l",xlab="        datetime",ylab="Voltage", frame.plot=T, xaxt="n")
@@ -29,7 +27,15 @@ voltagePlot <- function(){
   axis(2, at=c(0,2,4,6))
 }
 
-voltagePlot()
+globalReactivePowerPlot <- function(){
+  DT <- readDataSet()
+  plot(DT$global_reactive_power,type="l",xlab="       datetime",ylab="Global_reactive_power", frame.plot=T, xaxt="n")
+  axis(1, at=c(0, 1500, 2880), main="datetime", labels=c("Thur","Fri","Sat"))
+  axis(2, at=c(0,2,4,6))  
+}
+
+globalReactivePowerPlot()
+#voltagePlot()
 
 #plot4 <- function(){
 #  
